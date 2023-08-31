@@ -1,0 +1,44 @@
+---
+title: "Learning R on iris"
+author: Originally published by Stephen Malefetsane Moerane at <https://rpubs.com/moeransm/intro-iris>
+format: 
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+---
+
+# Introduction
+
+Numerous guides have been written on the exploration of this widely known dataset. Iris, introduced by Ronald Fisher in his 1936 paper *The use of multiple measurements in taxonomic problems*, contains three plant species (setosa, virginica, versicolor) and four features measured for each sample. These quantify the morphologic variation of the iris flower in its three species, all measurements given in centimeters.
+
+Any comments within our code have to be preceded by the pound sign to notify the compiler to ignore them.
+
+`# comments appear like this in code`
+
+# Load the iris dataset
+
+```{r}
+# The datasets package needs to be loaded to access our data 
+# For a full list of these datasets, type library(help = "datasets")
+library(datasets)
+data(iris)
+summary(iris)
+```
+
+The `summary()` function gives summary statistics for any dataset. It can also be called on one variable instead of on the whole dataset. Try `summary(iris$Sepal.Length)` and compare that with the above summaries.
+
+Alternatively, you may only want to know the column names of your dataset, in which case you can use `names(NameOfdataset)`, which in our case would look like `names(iris)`. Also notice that each coloumn name in the `iris` dataset has some upper case letters, which might be inconvenient to work with. You can then call the `tolower()` function on `names(iris)` to make this change. For those who might prefer upper case column names, the `toupper()` function will instead, be useful.
+
+Written packages make it easier to work with datasets than regular baseR functions. They have been optimized to be faster and more intuitive than baseR functions, therefore reducing the steepness of the R learning curve. Let's take a look;
+
+# The dplyr package
+
+Use `install.packages("dplyr")` in your console to install this package. Note that you must be connected to the internet. If you've opened a new R script file, you will need to use the keys CTRL+Enter \[PC\] or Cmd+Enter \[Mac\] to run the commands.
+
+### filter()
+
+```{r}
+names(iris) <- tolower(names(iris))
+library(dplyr)
+```
